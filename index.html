@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students Meet</title>
+    <style>
+        body {
+            background-color: rgb(226, 243, 242);
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        .head{
+            color: #140101;
+            text-align: center;
+        }
+        #search {
+            margin-bottom: 20px;
+            padding: 10px;
+            width: 100%;
+            max-width: 400px;
+            font-size: 16px;
+        }
+        #student-container {
+            display: flex;
+            gap: 11px;
+        }
+        .student-card {
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body> 
+    <div class="head">
+    <h1 >Students Meet 🔰</h1>
+    <input type="text" id="search" placeholder="Search Students Here ..." onkeyup="loadSearchResult()">
+    <div id="student-container"></div>
+</div>
+    <script>
+        const students = [
+            "chetan ❤",
+            "shubhh 🧡",
+            "jivitesh 💛",
+            "rutuja 💚",
+            "sejj 💙",
+            "anii 🤎",
+            "gauri 🖤",
+            "mansi 💜",
+            "pradhumna 🤍",
+            "yash 💟",
+            "om 💝",
+            "tushar 💌"];
+        const studentsContainer = document.getElementById("student-container");
+
+        function renderStudents(studentList) {
+            studentsContainer.innerHTML = ''; 
+            studentList.forEach((stud) => {
+                studentsContainer.innerHTML += `<div class="student-card">${stud}</div>`;
+            });
+        }
+
+        renderStudents(students); 
+
+        function loadSearchResult() {
+            const inputElement = document.getElementById('search');
+            const searchText = inputElement.value.toLowerCase();
+            
+            const filteredStudents = students.filter((stud) =>
+                stud.toLowerCase().includes(searchText)
+            );
+
+            renderStudents(filteredStudents); 
+        }
+    </script>
+</body>
+</html>
